@@ -1,15 +1,32 @@
+# yaml-language-server: $schema=https://unpkg.com/@sveltia/cms/schema/sveltia-cms.json
 backend:
-  name: git-gateway
+  # Direct GitHub backend, authenticated through Netlify's built-in
+  # OAuth relay — free, no DecapBridge subscription, no per-publish
+  # credits. This replaces the old git-gateway + DecapBridge setup.
+  #
+  # One-time setup (see README.md's "Deployment" section for the full walkthrough):
+  #   1. On GitHub: Settings -> Developer settings -> OAuth Apps ->
+  #      New OAuth App. Any name/homepage URL is fine. Set
+  #      "Authorization callback URL" to exactly:
+  #        https://api.netlify.com/auth/done
+  #      Save, then copy the Client ID and generate + copy a Client
+  #      Secret (you only get to see the secret once).
+  #   2. On Netlify: this site -> Project configuration -> Access &
+  #      security -> OAuth -> Authentication Providers -> Install
+  #      provider -> GitHub. Paste in the Client ID and Client Secret
+  #      from step 1. Save.
+  #   3. Replace REPLACE_WITH_YOUR_GITHUB_USERNAME/REPLACE_WITH_YOUR_REPO_NAME
+  #      below with your actual GitHub "owner/repo" (e.g.
+  #      paullegaspi/togglemind-ai-website).
+  # That's it — no base_url override needed; this is Sveltia/Decap's
+  # documented default behavior for sites hosted on Netlify.
+  name: github
+  repo: johnpaullegaspi/togglemind-website
   branch: main
-  # DecapBridge replaces Netlify Identity/Git Gateway auth (Netlify
-  # Identity is deprecated). After registering this site at
-  # https://decapbridge.com, paste the identity_url and gateway_url it
-  # gives you below — see DEPLOYMENT.md for the full walkthrough.
-  identity_url: https://auth.decapbridge.com/sites/9ffe5dab-1958-4b6a-9e81-0ffbef8e8108
-  gateway_url: https://gateway.decapbridge.com
 
 media_folder: "assets/images"
 public_folder: "assets/images"
+
 site_url: https://togglemind.netlify.app
 display_url: https://togglemind.netlify.app
 logo_url: /assets/images/logo-icon.png
@@ -18,8 +35,7 @@ logo_url: /assets/images/logo-icon.png
 # `node scripts/build.js`), which regenerates index.html from these
 # JSON files — the live site is always plain static HTML, never
 # rendered client-side.
-# possible values: simple (triggers build to save), editorial_workflow (can save without building and deploying to live)
-publish_mode: editorial_workflow
+publish_mode: simple
 
 collections:
   # Site Settings
