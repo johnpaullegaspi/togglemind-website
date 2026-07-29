@@ -1,0 +1,176 @@
+backend:
+  name: git-gateway
+  branch: main
+  # DecapBridge replaces Netlify Identity/Git Gateway auth (Netlify
+  # Identity is deprecated). After registering this site at
+  # https://decapbridge.com, paste the identity_url and gateway_url it
+  # gives you below — see DEPLOYMENT.md for the full walkthrough.
+  identity_url: https://auth.decapbridge.com/sites/REPLACE_WITH_YOUR_SITE_ID
+  gateway_url: https://gateway.decapbridge.com/sites/REPLACE_WITH_YOUR_SITE_ID
+
+media_folder: "assets/images"
+public_folder: "assets/images"
+
+site_url: https://togglemind.netlify.app
+display_url: https://togglemind.netlify.app
+logo_url: /assets/images/logo-icon.png
+
+# Every content change triggers a Netlify build (netlify.toml runs
+# `node scripts/build.js`), which regenerates index.html from these
+# JSON files — the live site is always plain static HTML, never
+# rendered client-side.
+publish_mode: simple
+
+collections:
+  # Site Settings
+  - name: "settings"
+    label: "Site Settings"
+    files:
+      - name: "general"
+        label: "General Settings"
+        file: "_data/settings.json"
+        fields:
+          - { label: "Site Title", name: "title", widget: "string" }
+          - { label: "Tagline", name: "tagline", widget: "string" }
+          - { label: "Meta Description", name: "description", widget: "text" }
+          - { label: "Contact Email", name: "email", widget: "string" }
+          - { label: "Contact Phone (e.g. +63 994 504 0628)", name: "phone", widget: "string" }
+          - { label: "Facebook Page URL", name: "facebook", widget: "string", hint: "Full URL, e.g. https://fb.com/togglemind" }
+
+  # Hero Section
+  - name: "hero"
+    label: "Hero Section"
+    folder: "_content/hero"
+    create: false
+    slug: "{{slug}}"
+    fields:
+      - { label: "Badge Text", name: "badge", widget: "string" }
+      - { label: "Heading", name: "heading", widget: "string" }
+      - { label: "Highlighted Word", name: "highlight", widget: "string" }
+      - { label: "Description", name: "description", widget: "text" }
+      - { label: "Primary Button Label", name: "cta_primary", widget: "string" }
+      - { label: "Secondary Button Label", name: "cta_secondary", widget: "string" }
+      - { label: "Hero Photo", name: "image", widget: "image" }
+      - { label: "Hero Photo Alt Text", name: "image_alt", widget: "string" }
+
+  # About Section
+  - name: "about"
+    label: "About Section"
+    folder: "_content/about"
+    create: false
+    fields:
+      - { label: "Section Label", name: "label", widget: "string" }
+      - { label: "Heading", name: "heading", widget: "string" }
+      - { label: "Paragraph 1", name: "paragraph_1", widget: "text" }
+      - { label: "Paragraph 2", name: "paragraph_2", widget: "text" }
+      - { label: "Paragraph 3", name: "paragraph_3", widget: "text" }
+
+  # Profile Card
+  - name: "profile"
+    label: "Profile Card"
+    folder: "_content/profile"
+    create: false
+    fields:
+      - { label: "Name", name: "name", widget: "string" }
+      - { label: "Role", name: "role", widget: "string" }
+      - { label: "Bio", name: "bio", widget: "text" }
+      - { label: "Stat 1 Value", name: "stat_1_value", widget: "string" }
+      - { label: "Stat 1 Label", name: "stat_1_label", widget: "string" }
+      - { label: "Stat 2 Value", name: "stat_2_value", widget: "string" }
+      - { label: "Stat 2 Label", name: "stat_2_label", widget: "string" }
+      - { label: "Photo", name: "photo", widget: "image" }
+      - { label: "Photo Alt Text", name: "photo_alt", widget: "string" }
+
+  # Services
+  - name: "services"
+    label: "Services"
+    folder: "_content/services"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Service Name", name: "title", widget: "string" }
+      - { label: "Icon", name: "icon", widget: "select", options: ["monitor", "settings", "bar-chart"] }
+      - { label: "Description", name: "description", widget: "text" }
+      - label: "Features"
+        name: "features"
+        widget: "list"
+        field: { label: "Feature", name: "feature", widget: "string" }
+      - { label: "Display Order", name: "order", widget: "number", hint: "Lower numbers show first" }
+
+  # Industries
+  - name: "industries"
+    label: "Industries"
+    folder: "_content/industries"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Industry Name", name: "title", widget: "string" }
+      - { label: "Icon Emoji", name: "icon", widget: "string" }
+      - { label: "Display Order", name: "order", widget: "number", hint: "Lower numbers show first" }
+
+  # Process Steps
+  - name: "process"
+    label: "Process Steps"
+    folder: "_content/process"
+    create: true
+    slug: "{{number}}-{{slug}}"
+    fields:
+      - { label: "Step Number", name: "number", widget: "number" }
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Description", name: "description", widget: "text" }
+
+  # Why Choose Us
+  - name: "why_us"
+    label: "Why Choose Us"
+    folder: "_content/why_us"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Description", name: "description", widget: "text" }
+      - { label: "Icon", name: "icon", widget: "select", options: ["shield", "zap", "users", "star", "layout", "message-circle", "check-circle", "trending-up"] }
+      - { label: "Display Order", name: "order", widget: "number", hint: "Lower numbers show first" }
+
+  # Results
+  - name: "results"
+    label: "Results"
+    folder: "_content/results"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Description", name: "description", widget: "text" }
+      - { label: "Icon Emoji", name: "icon", widget: "string" }
+      - { label: "Display Order", name: "order", widget: "number", hint: "Lower numbers show first" }
+
+  # Technologies
+  - name: "technologies"
+    label: "Technologies"
+    folder: "_content/technologies"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Technology Name", name: "title", widget: "string" }
+      - { label: "Display Order", name: "order", widget: "number", hint: "Lower numbers show first" }
+
+  # FAQ
+  - name: "faq"
+    label: "FAQ"
+    folder: "_content/faq"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Question", name: "question", widget: "string" }
+      - { label: "Answer", name: "answer", widget: "text" }
+      - { label: "Display Order", name: "order", widget: "number", hint: "Lower numbers show first" }
+
+  # Contact Section
+  - name: "contact"
+    label: "Contact Section"
+    folder: "_content/contact"
+    create: false
+    fields:
+      - { label: "Heading", name: "heading", widget: "string" }
+      - { label: "Description", name: "description", widget: "text" }
+      - { label: "Button Label", name: "cta_primary", widget: "string" }
+      - { label: "Button Link", name: "cta_primary_link", widget: "string", hint: "Where 'Book a Free Consultation' should go, e.g. a Calendly URL" }

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Content Manager — Toggle Mind AI</title>
+    <link rel="icon" href="../favicon.ico" sizes="any">
+</head>
+<body>
+    <!--
+      IMPORTANT: keep this script tag at the end of <body>, pinned to an
+      EXACT version (never a "^range"). decap-cms's bundle runs
+      immediately on load and needs document.body to exist; a script in
+      <head> with no defer runs before body has parsed, which throws
+      "Cannot read properties of null (reading 'appendChild')" and
+      leaves this whole page blank. A caret range is also risky on its
+      own: it silently resolves to whatever decap-cms build is newest at
+      request time, so a new release can break this admin panel with no
+      code change on our side to point to.
+    -->
+    <script src="https://unpkg.com/decap-cms@3.14.0/dist/decap-cms.js"></script>
+</body>
+</html>
