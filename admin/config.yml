@@ -2,24 +2,8 @@
 backend:
   # Direct GitHub backend, authenticated through Netlify's built-in
   # OAuth relay — free, no DecapBridge subscription, no per-publish
-  # credits. This replaces the old git-gateway + DecapBridge setup.
-  #
-  # One-time setup (see README.md's "Deployment" section for the full walkthrough):
-  #   1. On GitHub: Settings -> Developer settings -> OAuth Apps ->
-  #      New OAuth App. Any name/homepage URL is fine. Set
-  #      "Authorization callback URL" to exactly:
-  #        https://api.netlify.com/auth/done
-  #      Save, then copy the Client ID and generate + copy a Client
-  #      Secret (you only get to see the secret once).
-  #   2. On Netlify: this site -> Project configuration -> Access &
-  #      security -> OAuth -> Authentication Providers -> Install
-  #      provider -> GitHub. Paste in the Client ID and Client Secret
-  #      from step 1. Save.
-  #   3. Replace REPLACE_WITH_YOUR_GITHUB_USERNAME/REPLACE_WITH_YOUR_REPO_NAME
-  #      below with your actual GitHub "owner/repo" (e.g.
-  #      paullegaspi/togglemind-ai-website).
-  # That's it — no base_url override needed; this is Sveltia/Decap's
-  # documented default behavior for sites hosted on Netlify.
+  # credits. See README.md's "Deployment" section for the one-time
+  # GitHub OAuth App + Netlify "Install provider" setup.
   name: github
   repo: johnpaullegaspi/togglemind-website
   branch: main
@@ -37,183 +21,157 @@ logo_url: /assets/images/logo-icon.png
 # rendered client-side.
 publish_mode: simple
 
+# ---------------------------------------------------------------------
+# Single-file content model.
+#
+# Everything the site displays lives in ONE JSON file, _content/site.json,
+# edited as ONE Sveltia CMS entry ("Website Content"). Every section below
+# (Site Settings, Hero, About, Profile, Services, Industries, Process, Why
+# Choose Us, Results, Technologies, FAQ, Contact) is just a field group or
+# a list *inside* that one entry — there's only one "Save" button for the
+# whole site. Edit as many fields, in as many sections, as you want, then
+# save once: that's one Git commit, one Netlify build, no matter how much
+# you changed. This replaces an earlier version of this project that used
+# a separate file per section (and, for Services/Industries/etc., a
+# separate file per *item*) — that meant one Netlify build per section
+# per save, which is exactly what this consolidation avoids.
+#
+# Trade-off: the editor page is longer to scroll through since every
+# section lives on one screen. Given the goal is minimizing publishes,
+# that's the right trade for this site.
+# ---------------------------------------------------------------------
 collections:
-  # Site Settings
-  - name: "settings"
-    label: "Site Settings"
+  - name: "site"
+    label: "Website Content"
     files:
-      - name: "general"
-        label: "General Settings"
-        file: "_data/settings.json"
+      - name: "content"
+        label: "Everything (one save = one publish)"
+        file: "_content/site.json"
         extension: "json"
         format: "json"
         fields:
-          - { label: "Site Title", name: "title", widget: "string" }
-          - { label: "Tagline", name: "tagline", widget: "string" }
-          - { label: "Meta Description", name: "description", widget: "text" }
-          - { label: "Contact Email", name: "email", widget: "string" }
-          - { label: "Contact Phone (e.g. +63 994 504 0628)", name: "phone", widget: "string" }
-          - { label: "Facebook Page URL", name: "facebook", widget: "string", hint: "Full URL, e.g. https://fb.com/togglemind" }
+          - label: "Site Settings"
+            name: "settings"
+            widget: "object"
+            fields:
+              - { label: "Site Title", name: "title", widget: "string" }
+              - { label: "Tagline", name: "tagline", widget: "string" }
+              - { label: "Meta Description", name: "description", widget: "text" }
+              - { label: "Contact Email", name: "email", widget: "string" }
+              - { label: "Contact Phone (e.g. +63 994 504 0628)", name: "phone", widget: "string" }
+              - { label: "Facebook Page URL", name: "facebook", widget: "string", hint: "Full URL, e.g. https://fb.com/togglemind" }
 
-  # Hero Section
-  - name: "hero"
-    label: "Hero Section"
-    folder: "_content/hero"
-    create: false
-    extension: "json"
-    format: "json"
-    slug: "{{slug}}"
-    fields:
-      - { label: "Badge Text", name: "badge", widget: "string" }
-      - { label: "Heading", name: "heading", widget: "string" }
-      - { label: "Highlighted Word", name: "highlight", widget: "string" }
-      - { label: "Description", name: "description", widget: "text" }
-      - { label: "Primary Button Label", name: "cta_primary", widget: "string" }
-      - { label: "Secondary Button Label", name: "cta_secondary", widget: "string" }
-      - { label: "Hero Photo", name: "image", widget: "image" }
-      - { label: "Hero Photo Alt Text", name: "image_alt", widget: "string" }
+          - label: "Hero Section"
+            name: "hero"
+            widget: "object"
+            fields:
+              - { label: "Badge Text", name: "badge", widget: "string" }
+              - { label: "Heading", name: "heading", widget: "string" }
+              - { label: "Highlighted Word", name: "highlight", widget: "string" }
+              - { label: "Description", name: "description", widget: "text" }
+              - { label: "Primary Button Label", name: "cta_primary", widget: "string" }
+              - { label: "Secondary Button Label", name: "cta_secondary", widget: "string" }
+              - { label: "Hero Photo", name: "image", widget: "image" }
+              - { label: "Hero Photo Alt Text", name: "image_alt", widget: "string" }
 
-  # About Section
-  - name: "about"
-    label: "About Section"
-    folder: "_content/about"
-    create: false
-    extension: "json"
-    format: "json"
-    slug: "{{slug}}"
-    fields:
-      - { label: "Section Label", name: "label", widget: "string" }
-      - { label: "Heading", name: "heading", widget: "string" }
-      - { label: "Paragraph 1", name: "paragraph_1", widget: "text" }
-      - { label: "Paragraph 2", name: "paragraph_2", widget: "text" }
-      - { label: "Paragraph 3", name: "paragraph_3", widget: "text" }
+          - label: "About Section"
+            name: "about"
+            widget: "object"
+            fields:
+              - { label: "Section Label", name: "label", widget: "string" }
+              - { label: "Heading", name: "heading", widget: "string" }
+              - { label: "Paragraph 1", name: "paragraph_1", widget: "text" }
+              - { label: "Paragraph 2", name: "paragraph_2", widget: "text" }
+              - { label: "Paragraph 3", name: "paragraph_3", widget: "text" }
 
-  # Profile Card
-  - name: "profile"
-    label: "Profile Card"
-    folder: "_content/profile"
-    create: false
-    extension: "json"
-    format: "json"
-    slug: "{{slug}}"
-    fields:
-      - { label: "Name", name: "name", widget: "string" }
-      - { label: "Role", name: "role", widget: "string" }
-      - { label: "Bio", name: "bio", widget: "text" }
-      - { label: "Stat 1 Value", name: "stat_1_value", widget: "string" }
-      - { label: "Stat 1 Label", name: "stat_1_label", widget: "string" }
-      - { label: "Stat 2 Value", name: "stat_2_value", widget: "string" }
-      - { label: "Stat 2 Label", name: "stat_2_label", widget: "string" }
-      - { label: "Photo", name: "photo", widget: "image" }
-      - { label: "Photo Alt Text", name: "photo_alt", widget: "string" }
+          - label: "Profile Card"
+            name: "profile"
+            widget: "object"
+            fields:
+              - { label: "Name", name: "name", widget: "string" }
+              - { label: "Role", name: "role", widget: "string" }
+              - { label: "Bio", name: "bio", widget: "text" }
+              - { label: "Stat 1 Value", name: "stat_1_value", widget: "string" }
+              - { label: "Stat 1 Label", name: "stat_1_label", widget: "string" }
+              - { label: "Stat 2 Value", name: "stat_2_value", widget: "string" }
+              - { label: "Stat 2 Label", name: "stat_2_label", widget: "string" }
+              - { label: "Photo", name: "photo", widget: "image" }
+              - { label: "Photo Alt Text", name: "photo_alt", widget: "string" }
 
-  # Services
-  - name: "services"
-    label: "Services"
-    folder: "_content/services"
-    create: true
-    extension: "json"
-    format: "json"
-    slug: "{{slug}}"
-    fields:
-      - { label: "Service Name", name: "title", widget: "string" }
-      - { label: "Icon", name: "icon", widget: "select", options: ["monitor", "settings", "bar-chart"] }
-      - { label: "Description", name: "description", widget: "text" }
-      - label: "Features"
-        name: "features"
-        widget: "list"
-        allow_add: true
-      - { label: "Display Order", name: "order", widget: "number", hint: "Lower numbers show first" }
+          - label: "Services"
+            name: "services"
+            widget: "list"
+            summary: "{{title}}"
+            fields:
+              - { label: "Service Name", name: "title", widget: "string" }
+              - { label: "Icon", name: "icon", widget: "select", options: ["monitor", "settings", "bar-chart"] }
+              - { label: "Description", name: "description", widget: "text" }
+              - label: "Features"
+                name: "features"
+                widget: "list"
+                allow_add: true
+              - { label: "Display Order", name: "order", widget: "number", hint: "Lower numbers show first" }
 
-  # Industries
-  - name: "industries"
-    label: "Industries"
-    folder: "_content/industries"
-    create: true
-    extension: "json"
-    format: "json"
-    slug: "{{slug}}"
-    fields:
-      - { label: "Industry Name", name: "title", widget: "string" }
-      - { label: "Icon Emoji", name: "icon", widget: "string" }
-      - { label: "Display Order", name: "order", widget: "number", hint: "Lower numbers show first" }
+          - label: "Industries"
+            name: "industries"
+            widget: "list"
+            summary: "{{title}}"
+            fields:
+              - { label: "Industry Name", name: "title", widget: "string" }
+              - { label: "Icon Emoji", name: "icon", widget: "string" }
+              - { label: "Display Order", name: "order", widget: "number", hint: "Lower numbers show first" }
 
-  # Process Steps
-  - name: "process"
-    label: "Process Steps"
-    folder: "_content/process"
-    create: true
-    extension: "json"
-    format: "json"
-    slug: "{{number}}-{{slug}}"
-    fields:
-      - { label: "Step Number", name: "number", widget: "number" }
-      - { label: "Title", name: "title", widget: "string" }
-      - { label: "Description", name: "description", widget: "text" }
+          - label: "Process Steps"
+            name: "process"
+            widget: "list"
+            summary: "{{number}}. {{title}}"
+            fields:
+              - { label: "Step Number", name: "number", widget: "number" }
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Description", name: "description", widget: "text" }
 
-  # Why Choose Us
-  - name: "why_us"
-    label: "Why Choose Us"
-    folder: "_content/why_us"
-    create: true
-    extension: "json"
-    format: "json"
-    slug: "{{slug}}"
-    fields:
-      - { label: "Title", name: "title", widget: "string" }
-      - { label: "Description", name: "description", widget: "text" }
-      - { label: "Icon", name: "icon", widget: "select", options: ["shield", "zap", "users", "star", "layout", "message-circle", "check-circle", "trending-up"] }
-      - { label: "Display Order", name: "order", widget: "number", hint: "Lower numbers show first" }
+          - label: "Why Choose Us"
+            name: "why_us"
+            widget: "list"
+            summary: "{{title}}"
+            fields:
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Description", name: "description", widget: "text" }
+              - { label: "Icon", name: "icon", widget: "select", options: ["shield", "zap", "users", "star", "layout", "message-circle", "check-circle", "trending-up"] }
+              - { label: "Display Order", name: "order", widget: "number", hint: "Lower numbers show first" }
 
-  # Results
-  - name: "results"
-    label: "Results"
-    folder: "_content/results"
-    create: true
-    extension: "json"
-    format: "json"
-    slug: "{{slug}}"
-    fields:
-      - { label: "Title", name: "title", widget: "string" }
-      - { label: "Description", name: "description", widget: "text" }
-      - { label: "Icon Emoji", name: "icon", widget: "string" }
-      - { label: "Display Order", name: "order", widget: "number", hint: "Lower numbers show first" }
+          - label: "Results"
+            name: "results"
+            widget: "list"
+            summary: "{{title}}"
+            fields:
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Description", name: "description", widget: "text" }
+              - { label: "Icon Emoji", name: "icon", widget: "string" }
+              - { label: "Display Order", name: "order", widget: "number", hint: "Lower numbers show first" }
 
-  # Technologies
-  - name: "technologies"
-    label: "Technologies"
-    folder: "_content/technologies"
-    create: true
-    extension: "json"
-    format: "json"
-    slug: "{{slug}}"
-    fields:
-      - { label: "Technology Name", name: "title", widget: "string" }
-      - { label: "Display Order", name: "order", widget: "number", hint: "Lower numbers show first" }
+          - label: "Technologies"
+            name: "technologies"
+            widget: "list"
+            summary: "{{title}}"
+            fields:
+              - { label: "Technology Name", name: "title", widget: "string" }
+              - { label: "Display Order", name: "order", widget: "number", hint: "Lower numbers show first" }
 
-  # FAQ
-  - name: "faq"
-    label: "FAQ"
-    folder: "_content/faq"
-    create: true
-    extension: "json"
-    format: "json"
-    slug: "{{slug}}"
-    fields:
-      - { label: "Question", name: "question", widget: "string" }
-      - { label: "Answer", name: "answer", widget: "text" }
-      - { label: "Display Order", name: "order", widget: "number", hint: "Lower numbers show first" }
+          - label: "FAQ"
+            name: "faq"
+            widget: "list"
+            summary: "{{question}}"
+            fields:
+              - { label: "Question", name: "question", widget: "string" }
+              - { label: "Answer", name: "answer", widget: "text" }
+              - { label: "Display Order", name: "order", widget: "number", hint: "Lower numbers show first" }
 
-  # Contact Section
-  - name: "contact"
-    label: "Contact Section"
-    folder: "_content/contact"
-    create: false
-    extension: "json"
-    format: "json"
-    slug: "{{slug}}"
-    fields:
-      - { label: "Heading", name: "heading", widget: "string" }
-      - { label: "Description", name: "description", widget: "text" }
-      - { label: "Button Label", name: "cta_primary", widget: "string" }
-      - { label: "Button Link", name: "cta_primary_link", widget: "string", hint: "Where 'Book a Free Consultation' should go, e.g. a Calendly URL" }
+          - label: "Contact Section"
+            name: "contact"
+            widget: "object"
+            fields:
+              - { label: "Heading", name: "heading", widget: "string" }
+              - { label: "Description", name: "description", widget: "text" }
+              - { label: "Button Label", name: "cta_primary", widget: "string" }
+              - { label: "Button Link", name: "cta_primary_link", widget: "string", hint: "Where 'Book a Free Consultation' should go, e.g. a Calendly URL" }
