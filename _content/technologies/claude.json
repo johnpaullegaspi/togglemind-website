@@ -1,1 +1,4 @@
-{ "title": "Claude", "order": 2 }
+{
+  "title": "Claude",
+  "order": 1
+}
