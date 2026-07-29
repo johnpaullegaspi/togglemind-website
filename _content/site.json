@@ -14,7 +14,7 @@
     "description": "We help businesses improve efficiency by automating repetitive tasks, building professional websites, and providing AI-powered business solutions that simplify everyday operations.",
     "cta_primary": "Book a Free Consultation",
     "cta_secondary": "View Our Services",
-    "image": "assets/images/paul-legaspi-hero.jpg",
+    "image": "/assets/images/ChatGPT Image Jul 29, 2026, 01_32_43 PM.png",
     "image_alt": "Paul Legaspi, AI Automation Engineer at Toggle Mind AI"
   },
   "about": {
@@ -261,52 +261,60 @@
       "order": 3
     },
     {
-      "title": "n8n",
+      "title": "Kimi AI",
       "order": 4
     },
     {
-      "title": "Make",
+      "title": "Meta AI",
       "order": 5
     },
     {
-      "title": "Zapier",
+      "title": "HTML5",
       "order": 6
     },
     {
-      "title": "HTML",
+      "title": "CSS3",
       "order": 7
     },
     {
-      "title": "CSS",
+      "title": "Javascript",
       "order": 8
     },
     {
-      "title": "JavaScript",
+      "title": "Cloud Based Databases",
       "order": 9
     },
     {
-      "title": ".NET",
+      "title": "Google Workspace",
       "order": 10
     },
     {
-      "title": "ASP.NET Core",
+      "title": "Make (Integromat)",
       "order": 11
     },
     {
-      "title": "SQL Server",
+      "title": "Messaging Services",
       "order": 12
     },
     {
-      "title": "PostgreSQL",
+      "title": "Email Services",
       "order": 13
     },
     {
-      "title": "Python",
+      "title": "Webhooks",
       "order": 14
     },
     {
-      "title": "Node.js",
+      "title": "HTTP / API Modules",
       "order": 15
+    },
+    {
+      "title": "Sveltia CMS",
+      "order": 16
+    },
+    {
+      "title": "Form Builder Platform",
+      "order": 17
     }
   ],
   "faq": [
