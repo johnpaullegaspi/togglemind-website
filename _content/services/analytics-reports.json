@@ -1,0 +1,13 @@
+{
+  "title": "AI-Powered Analytics & Reports",
+  "icon": "bar-chart",
+  "description": "Help businesses organize data into meaningful reports and dashboards that support better day-to-day decision making.",
+  "features": [
+    "Business Dashboards",
+    "KPI Reporting",
+    "Automated Reports",
+    "Data Visualization",
+    "Spreadsheet Automation"
+  ],
+  "order": 3
+}
