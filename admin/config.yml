@@ -29,6 +29,8 @@ collections:
       - name: "general"
         label: "General Settings"
         file: "_data/settings.json"
+        extension: "json"
+        format: "json"
         fields:
           - { label: "Site Title", name: "title", widget: "string" }
           - { label: "Tagline", name: "tagline", widget: "string" }
@@ -42,6 +44,8 @@ collections:
     label: "Hero Section"
     folder: "_content/hero"
     create: false
+    extension: "json"
+    format: "json"
     slug: "{{slug}}"
     fields:
       - { label: "Badge Text", name: "badge", widget: "string" }
@@ -58,6 +62,9 @@ collections:
     label: "About Section"
     folder: "_content/about"
     create: false
+    extension: "json"
+    format: "json"
+    slug: "{{slug}}"
     fields:
       - { label: "Section Label", name: "label", widget: "string" }
       - { label: "Heading", name: "heading", widget: "string" }
@@ -70,6 +77,9 @@ collections:
     label: "Profile Card"
     folder: "_content/profile"
     create: false
+    extension: "json"
+    format: "json"
+    slug: "{{slug}}"
     fields:
       - { label: "Name", name: "name", widget: "string" }
       - { label: "Role", name: "role", widget: "string" }
@@ -86,6 +96,8 @@ collections:
     label: "Services"
     folder: "_content/services"
     create: true
+    extension: "json"
+    format: "json"
     slug: "{{slug}}"
     fields:
       - { label: "Service Name", name: "title", widget: "string" }
@@ -94,7 +106,7 @@ collections:
       - label: "Features"
         name: "features"
         widget: "list"
-        field: { label: "Feature", name: "feature", widget: "string" }
+        allow_add: true
       - { label: "Display Order", name: "order", widget: "number", hint: "Lower numbers show first" }
 
   # Industries
@@ -102,6 +114,8 @@ collections:
     label: "Industries"
     folder: "_content/industries"
     create: true
+    extension: "json"
+    format: "json"
     slug: "{{slug}}"
     fields:
       - { label: "Industry Name", name: "title", widget: "string" }
@@ -113,6 +127,8 @@ collections:
     label: "Process Steps"
     folder: "_content/process"
     create: true
+    extension: "json"
+    format: "json"
     slug: "{{number}}-{{slug}}"
     fields:
       - { label: "Step Number", name: "number", widget: "number" }
@@ -124,6 +140,8 @@ collections:
     label: "Why Choose Us"
     folder: "_content/why_us"
     create: true
+    extension: "json"
+    format: "json"
     slug: "{{slug}}"
     fields:
       - { label: "Title", name: "title", widget: "string" }
@@ -136,6 +154,8 @@ collections:
     label: "Results"
     folder: "_content/results"
     create: true
+    extension: "json"
+    format: "json"
     slug: "{{slug}}"
     fields:
       - { label: "Title", name: "title", widget: "string" }
@@ -148,6 +168,8 @@ collections:
     label: "Technologies"
     folder: "_content/technologies"
     create: true
+    extension: "json"
+    format: "json"
     slug: "{{slug}}"
     fields:
       - { label: "Technology Name", name: "title", widget: "string" }
@@ -158,6 +180,8 @@ collections:
     label: "FAQ"
     folder: "_content/faq"
     create: true
+    extension: "json"
+    format: "json"
     slug: "{{slug}}"
     fields:
       - { label: "Question", name: "question", widget: "string" }
@@ -169,6 +193,9 @@ collections:
     label: "Contact Section"
     folder: "_content/contact"
     create: false
+    extension: "json"
+    format: "json"
+    slug: "{{slug}}"
     fields:
       - { label: "Heading", name: "heading", widget: "string" }
       - { label: "Description", name: "description", widget: "text" }
