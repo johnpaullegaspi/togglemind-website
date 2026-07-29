@@ -16,20 +16,13 @@ togglemind-ai/
 ├── admin/
 │   ├── index.html          # Sveltia CMS admin panel entry
 │   └── config.yml          # Sveltia CMS collections config
-├── _content/               # Editable content (for Decap CMS)
-│   ├── hero/
-│   ├── about/
-│   ├── profile/
-│   ├── services/
-│   ├── industries/
-│   ├── process/
-│   ├── why_us/
-│   ├── results/
-│   ├── technologies/
-│   ├── faq/
-│   └── contact/
-├── _data/
-│   └── settings.json       # Site-wide settings
+├── _content/
+│   └── site.json           # ALL editable content, one file, one CMS entry —
+│                            # settings, hero, about, profile, services,
+│                            # industries, process, why_us, results,
+│                            # technologies, faq, contact all live here so
+│                            # one CMS save = one Git commit = one build,
+│                            # no matter how many sections you edit
 └── .gitignore
 ```
 
@@ -54,9 +47,11 @@ This project uses [Sveltia CMS](https://github.com/sveltia/sveltia-cms) — a fr
 
 3. **Point `admin/config.yml` at your repo.** Edit the `backend.repo` value to your actual `owner/repo` (e.g. `paullegaspi/togglemind-ai-website`), commit, and push. No other config change is needed — Sveltia CMS reads the same `admin/config.yml` shape as Decap CMS, and defaults to Netlify's OAuth relay automatically when no other auth method is configured.
 
-4. **Sign in.** Visit `https://<your-site>/admin`, click "Sign in with GitHub", authorize the app in the popup, and you'll land in the editor with every field already populated from the JSON files in `_content/`. Anyone you want to be able to edit content just needs to be a collaborator on the GitHub repo — no extra invite system to manage.
+4. **Sign in.** Visit `https://<your-site>/admin`, click "Sign in with GitHub", authorize the app in the popup, and you'll land in the editor with every field already populated from `_content/site.json`. Anyone you want to be able to edit content just needs to be a collaborator on the GitHub repo — no extra invite system to manage.
 
-Every save commits straight to the `main` branch on GitHub, which triggers a normal Netlify build (`node scripts/build.js` regenerates `index.html` from the updated JSON) — same publish flow as before, just without a paid proxy in the middle.
+All of the site's content — Site Settings, Hero, About, Profile, Services, Industries, Process, Why Choose Us, Results, Technologies, FAQ, and Contact — is edited on **one single screen** ("Website Content" → "Everything") inside one CMS entry. Edit as many fields, add/remove/reorder as many list items, across as many sections as you want, then click **Save once**. That one save is one Git commit, which triggers one Netlify build — no matter how much you changed. There's no way to accidentally rack up a build per section.
+
+Every save commits straight to the `main` branch on GitHub, which triggers a normal Netlify build (`node scripts/build.js` regenerates `index.html` from `_content/site.json`) — same publish flow as before, just without a paid proxy in the middle.
 
 ## Tech Stack
 
