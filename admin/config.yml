@@ -10,7 +10,7 @@ backend:
 
 media_folder: "assets/images"
 public_folder: "assets/images"
-
+publish_mode: editorial_workflow
 site_url: https://togglemind.netlify.app
 display_url: https://togglemind.netlify.app
 logo_url: /assets/images/logo-icon.png
