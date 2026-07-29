@@ -14,8 +14,8 @@ togglemind-ai/
 ├── assets/
 │   └── images/             # Images and media files
 ├── admin/
-│   ├── index.html          # Decap CMS admin panel entry
-│   └── config.yml          # Decap CMS collections config
+│   ├── index.html          # Sveltia CMS admin panel entry
+│   └── config.yml          # Sveltia CMS collections config
 ├── _content/               # Editable content (for Decap CMS)
 │   ├── hero/
 │   ├── about/
@@ -35,27 +35,35 @@ togglemind-ai/
 
 ## Deployment
 
-### Netlify (Recommended)
-1. Drag and drop the `togglemind-ai/` folder to [Netlify Drop](https://app.netlify.com/drop)
-2. Your site will be live instantly
+### Netlify
+1. Push this project to a GitHub repository.
+2. In Netlify, "Add new site" -> "Import an existing project" -> pick the repo. Build command is already set via `netlify.toml` (`node scripts/build.js`), publish directory `.` — no manual config needed.
+3. Once the first deploy finishes, your site is live at the Netlify URL (or a custom domain you attach).
 
-### Decap CMS Setup
-1. Connect your Git repository to Netlify
-2. Enable Identity service in Netlify
-3. Add the Git Gateway in Netlify Identity settings
-4. Access `/admin` on your live site to manage content
+### Content editing: Sveltia CMS (via Netlify's free OAuth relay)
 
-### DecapBridge (Alternative)
-1. Push code to GitHub
-2. Connect repository at [DecapBridge](https://decapbridge.com)
-3. Update `admin/config.yml` backend settings for DecapBridge
+This project uses [Sveltia CMS](https://github.com/sveltia/sveltia-cms) — a free, actively-maintained, drop-in replacement for Decap CMS — authenticated directly against GitHub through Netlify's built-in OAuth relay. No DecapBridge subscription, no Netlify Identity, no per-publish credits or usage limits — just a one-time, five-minute setup:
+
+1. **Create a GitHub OAuth App.** On GitHub: Settings -> Developer settings -> OAuth Apps -> New OAuth App ([direct link](https://github.com/settings/developers)). Application name and homepage URL can be anything. For **Authorization callback URL**, enter exactly:
+   ```
+   https://api.netlify.com/auth/done
+   ```
+   Register the app, copy the **Client ID**, then generate and copy a **Client Secret** (GitHub only shows it once).
+
+2. **Register that OAuth app with Netlify.** On your site in Netlify: Project configuration -> Access & security -> OAuth -> Authentication Providers -> Install provider -> GitHub. Paste in the Client ID and Client Secret from step 1, then save. This step is per-Netlify-account, not per-site — you only do it once even if you add more sites later.
+
+3. **Point `admin/config.yml` at your repo.** Edit the `backend.repo` value to your actual `owner/repo` (e.g. `paullegaspi/togglemind-ai-website`), commit, and push. No other config change is needed — Sveltia CMS reads the same `admin/config.yml` shape as Decap CMS, and defaults to Netlify's OAuth relay automatically when no other auth method is configured.
+
+4. **Sign in.** Visit `https://<your-site>/admin`, click "Sign in with GitHub", authorize the app in the popup, and you'll land in the editor with every field already populated from the JSON files in `_content/`. Anyone you want to be able to edit content just needs to be a collaborator on the GitHub repo — no extra invite system to manage.
+
+Every save commits straight to the `main` branch on GitHub, which triggers a normal Netlify build (`node scripts/build.js` regenerates `index.html` from the updated JSON) — same publish flow as before, just without a paid proxy in the middle.
 
 ## Tech Stack
 
 - **HTML5** — Semantic markup
 - **CSS3** — Custom properties, Grid, Flexbox, animations
 - **Vanilla JavaScript** — No frameworks
-- **Decap CMS** — Content management
+- **Sveltia CMS** — Content management
 
 ## Brand Colors
 
