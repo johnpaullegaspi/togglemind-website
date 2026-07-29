@@ -5,8 +5,8 @@ backend:
   # Identity is deprecated). After registering this site at
   # https://decapbridge.com, paste the identity_url and gateway_url it
   # gives you below — see DEPLOYMENT.md for the full walkthrough.
-  identity_url: https://auth.decapbridge.com/sites/REPLACE_WITH_YOUR_SITE_ID
-  gateway_url: https://gateway.decapbridge.com/sites/REPLACE_WITH_YOUR_SITE_ID
+  identity_url: https://auth.decapbridge.com/sites/9ffe5dab-1958-4b6a-9e81-0ffbef8e8108
+  gateway_url: https://gateway.decapbridge.com
 
 media_folder: "assets/images"
 public_folder: "assets/images"
