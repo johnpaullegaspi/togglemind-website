@@ -2,7 +2,7 @@
   "name": "togglemind-ai-website",
   "version": "1.0.0",
   "private": true,
-  "description": "Static marketing website for Toggle Mind AI. Plain HTML5/CSS3/vanilla JS, with a small zero-dependency build script that renders content from _content/**/*.json and _data/settings.json (managed via Decap CMS / DecapBridge) into index.html.",
+  "description": "Static marketing website for Toggle Mind AI. Plain HTML5/CSS3/vanilla JS, with a small zero-dependency build script that renders content from the single _content/site.json file (managed as one entry in Sveltia CMS, so one save = one publish) into index.html.",
   "scripts": {
     "build": "node scripts/build.js",
     "start": "python3 -m http.server 8080"
