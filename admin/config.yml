@@ -10,7 +10,6 @@ backend:
 
 media_folder: "assets/images"
 public_folder: "assets/images"
-publish_mode: editorial_workflow
 site_url: https://togglemind.netlify.app
 display_url: https://togglemind.netlify.app
 logo_url: /assets/images/logo-icon.png
@@ -19,7 +18,8 @@ logo_url: /assets/images/logo-icon.png
 # `node scripts/build.js`), which regenerates index.html from these
 # JSON files — the live site is always plain static HTML, never
 # rendered client-side.
-publish_mode: simple
+# possible values: simple (triggers build to save), editorial_workflow (can save without building and deploying to live)
+publish_mode: editorial_workflow
 
 collections:
   # Site Settings
