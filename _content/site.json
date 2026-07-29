@@ -1,0 +1,350 @@
+{
+  "settings": {
+    "title": "Toggle Mind AI",
+    "tagline": "AI Solutions for Smarter Businesses",
+    "description": "Toggle Mind AI helps businesses save time, automate repetitive tasks, and make smarter decisions with practical AI-powered solutions.",
+    "email": "togglemind@gmail.com",
+    "phone": "+63 994 504 0628",
+    "facebook": "https://fb.com/togglemind"
+  },
+  "hero": {
+    "badge": "AI Solutions for Smarter Businesses",
+    "heading": "Helping Businesses Save Time Through",
+    "highlight": "AI Solutions",
+    "description": "We help businesses improve efficiency by automating repetitive tasks, building professional websites, and providing AI-powered business solutions that simplify everyday operations.",
+    "cta_primary": "Book a Free Consultation",
+    "cta_secondary": "View Our Services",
+    "image": "assets/images/paul-legaspi-hero.jpg",
+    "image_alt": "Paul Legaspi, AI Automation Engineer at Toggle Mind AI"
+  },
+  "about": {
+    "label": "About Us",
+    "heading": "Welcome to Toggle Mind AI",
+    "paragraph_1": "At Toggle Mind AI, we help businesses save time, automate repetitive tasks, and make more informed decisions using practical AI-powered solutions.",
+    "paragraph_2": "With more than 17 years of experience in software development and enterprise systems, we combine technical expertise with modern AI tools to help businesses improve workflows and establish a stronger digital presence.",
+    "paragraph_3": "We focus on creating solutions that are tailored to each client's needs rather than offering one-size-fits-all products."
+  },
+  "profile": {
+    "name": "Paul Legaspi",
+    "role": "AI Automation Engineer | AI Integration Consultant",
+    "bio": "With over 17 years of experience in software development and enterprise systems, Paul works with businesses to identify opportunities where technology and AI can simplify processes, improve efficiency, and support business growth.",
+    "stat_1_value": "17+",
+    "stat_1_label": "Years Experience",
+    "stat_2_value": "AI",
+    "stat_2_label": "Powered Solutions",
+    "photo": "assets/images/paul-legaspi-profile.jpg",
+    "photo_alt": "Paul Legaspi, founder of Toggle Mind AI"
+  },
+  "services": [
+    {
+      "title": "AI-Powered Website Development",
+      "icon": "monitor",
+      "description": "Build modern, responsive websites designed to showcase your business professionally across desktop and mobile devices.",
+      "features": [
+        "Responsive Design",
+        "Mobile Friendly",
+        "SEO Best Practices",
+        "Fast Performance",
+        "Easy Content Updates"
+      ],
+      "order": 1
+    },
+    {
+      "title": "AI Business Automation",
+      "icon": "settings",
+      "description": "Help businesses reduce repetitive manual work by automating routine processes where appropriate.",
+      "features": [
+        "Appointment Booking",
+        "Customer Inquiry Automation",
+        "Email Automation",
+        "Messenger Automation",
+        "Workflow & Document Processing"
+      ],
+      "order": 2
+    },
+    {
+      "title": "AI-Powered Analytics & Reports",
+      "icon": "bar-chart",
+      "description": "Help businesses organize data into meaningful reports and dashboards that support better day-to-day decision making.",
+      "features": [
+        "Business Dashboards",
+        "KPI Reporting",
+        "Automated Reports",
+        "Data Visualization",
+        "Spreadsheet Automation"
+      ],
+      "order": 3
+    }
+  ],
+  "industries": [
+    {
+      "title": "Restaurants",
+      "icon": "🍽️",
+      "order": 1
+    },
+    {
+      "title": "Dental Clinics",
+      "icon": "🦷",
+      "order": 2
+    },
+    {
+      "title": "Medical Clinics",
+      "icon": "🏥",
+      "order": 3
+    },
+    {
+      "title": "Veterinary Clinics",
+      "icon": "🐾",
+      "order": 4
+    },
+    {
+      "title": "Retail Stores",
+      "icon": "🛍️",
+      "order": 5
+    },
+    {
+      "title": "Real Estate",
+      "icon": "🏠",
+      "order": 6
+    },
+    {
+      "title": "Construction",
+      "icon": "🏗️",
+      "order": 7
+    },
+    {
+      "title": "Schools & Universities",
+      "icon": "🎓",
+      "order": 8
+    },
+    {
+      "title": "Professional Services",
+      "icon": "💼",
+      "order": 9
+    },
+    {
+      "title": "Small Businesses",
+      "icon": "🏪",
+      "order": 10
+    },
+    {
+      "title": "Salons & Spas",
+      "icon": "💇",
+      "order": 11
+    },
+    {
+      "title": "Logistics",
+      "icon": "📦",
+      "order": 12
+    }
+  ],
+  "process": [
+    {
+      "number": 1,
+      "title": "Initial Consultation",
+      "description": "We learn about your business and understand your goals."
+    },
+    {
+      "number": 2,
+      "title": "Planning",
+      "description": "Recommend practical solutions based on your requirements."
+    },
+    {
+      "number": 3,
+      "title": "Development",
+      "description": "Design, build, and test the solution."
+    },
+    {
+      "number": 4,
+      "title": "Launch",
+      "description": "Deploy and verify everything works as expected."
+    },
+    {
+      "number": 5,
+      "title": "Support",
+      "description": "Provide post-launch assistance and discuss future improvements."
+    }
+  ],
+  "why_us": [
+    {
+      "title": "17+ Years of Software Development Experience",
+      "description": "Deep technical background in building reliable business systems.",
+      "icon": "shield",
+      "order": 1
+    },
+    {
+      "title": "Practical AI Solutions",
+      "description": "We focus on what works, not what's trending.",
+      "icon": "zap",
+      "order": 2
+    },
+    {
+      "title": "Business-Focused Approach",
+      "description": "Solutions designed around your actual business needs.",
+      "icon": "users",
+      "order": 3
+    },
+    {
+      "title": "Modern Technologies",
+      "description": "Up-to-date tools and frameworks for optimal performance.",
+      "icon": "star",
+      "order": 4
+    },
+    {
+      "title": "Responsive Websites",
+      "description": "Flawless experience on every device and screen size.",
+      "icon": "layout",
+      "order": 5
+    },
+    {
+      "title": "Clear Communication",
+      "description": "Transparent updates and no technical jargon.",
+      "icon": "message-circle",
+      "order": 6
+    },
+    {
+      "title": "Reliable Project Delivery",
+      "description": "Committed to timelines and quality standards.",
+      "icon": "check-circle",
+      "order": 7
+    },
+    {
+      "title": "Ongoing Support Available",
+      "description": "We're here to help even after launch.",
+      "icon": "trending-up",
+      "order": 8
+    }
+  ],
+  "results": [
+    {
+      "title": "Save Time",
+      "description": "Free up hours spent on repetitive manual tasks.",
+      "icon": "⏱️",
+      "order": 1
+    },
+    {
+      "title": "Reduce Repetitive Work",
+      "description": "Automate routine processes that slow your team down.",
+      "icon": "🔄",
+      "order": 2
+    },
+    {
+      "title": "Improve Productivity",
+      "description": "Focus on high-value work that drives growth.",
+      "icon": "📈",
+      "order": 3
+    },
+    {
+      "title": "Better Business Insights",
+      "description": "Make informed decisions with organized data.",
+      "icon": "📊",
+      "order": 4
+    },
+    {
+      "title": "Stronger Online Presence",
+      "description": "Professional websites that build credibility.",
+      "icon": "🌐",
+      "order": 5
+    }
+  ],
+  "technologies": [
+    {
+      "title": "OpenAI",
+      "order": 1
+    },
+    {
+      "title": "Claude",
+      "order": 2
+    },
+    {
+      "title": "Google Gemini",
+      "order": 3
+    },
+    {
+      "title": "n8n",
+      "order": 4
+    },
+    {
+      "title": "Make",
+      "order": 5
+    },
+    {
+      "title": "Zapier",
+      "order": 6
+    },
+    {
+      "title": "HTML",
+      "order": 7
+    },
+    {
+      "title": "CSS",
+      "order": 8
+    },
+    {
+      "title": "JavaScript",
+      "order": 9
+    },
+    {
+      "title": ".NET",
+      "order": 10
+    },
+    {
+      "title": "ASP.NET Core",
+      "order": 11
+    },
+    {
+      "title": "SQL Server",
+      "order": 12
+    },
+    {
+      "title": "PostgreSQL",
+      "order": 13
+    },
+    {
+      "title": "Python",
+      "order": 14
+    },
+    {
+      "title": "Node.js",
+      "order": 15
+    }
+  ],
+  "faq": [
+    {
+      "question": "What services do you offer?",
+      "answer": "We offer three main services: AI-powered website development, AI business automation (including appointment booking, customer inquiry handling, email automation, and workflow automation), and AI-powered analytics & reporting with dashboards and data visualization.",
+      "order": 1
+    },
+    {
+      "question": "What types of businesses do you work with?",
+      "answer": "We work with a variety of businesses including restaurants, dental and medical clinics, veterinary clinics, retail stores, real estate agencies, construction companies, schools, professional services, and small businesses in general. Each solution is tailored to the specific needs of the business.",
+      "order": 2
+    },
+    {
+      "question": "How long does a typical project take?",
+      "answer": "Project timelines vary based on scope and complexity. A simple website may take 2-4 weeks, while automation projects typically range from 3-6 weeks. During our initial consultation, we'll provide a realistic timeline based on your specific requirements.",
+      "order": 3
+    },
+    {
+      "question": "Can you improve my existing website?",
+      "answer": "Yes, we can assess your current website and recommend improvements for design, performance, mobile responsiveness, SEO, or content management. We can work with existing platforms or rebuild if that's the better option.",
+      "order": 4
+    },
+    {
+      "question": "Can AI work with my current business processes?",
+      "answer": "In most cases, yes. We evaluate your existing workflows and identify where AI and automation can be integrated without disrupting your current operations. Our goal is to enhance your processes, not replace what's already working well.",
+      "order": 5
+    },
+    {
+      "question": "Do you provide support after launch?",
+      "answer": "Yes, we offer post-launch support to ensure everything runs smoothly. We can also discuss ongoing maintenance plans or future enhancements based on your evolving business needs.",
+      "order": 6
+    }
+  ],
+  "contact": {
+    "heading": "Let's Build Smarter Solutions for Your Business",
+    "description": "If you're looking to improve your online presence, simplify business processes, or explore practical AI solutions, we'd be happy to discuss your goals.",
+    "cta_primary": "Book a Free Consultation",
+    "cta_primary_link": "https://calendly.com"
+  }
+}
