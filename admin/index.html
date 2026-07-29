@@ -8,16 +8,22 @@
 </head>
 <body>
     <!--
-      IMPORTANT: keep this script tag at the end of <body>, pinned to an
-      EXACT version (never a "^range"). decap-cms's bundle runs
-      immediately on load and needs document.body to exist; a script in
-      <head> with no defer runs before body has parsed, which throws
-      "Cannot read properties of null (reading 'appendChild')" and
-      leaves this whole page blank. A caret range is also risky on its
-      own: it silently resolves to whatever decap-cms build is newest at
-      request time, so a new release can break this admin panel with no
-      code change on our side to point to.
+      Sveltia CMS — a drop-in, actively-maintained replacement for Decap
+      CMS. Reads the same admin/config.yml. Switched from decap-cms here
+      because the git-gateway + DecapBridge combo required a paid proxy
+      service billed per publish; Sveltia's GitHub backend authenticates
+      directly via Netlify's built-in (free) OAuth relay instead — see
+      the comments in config.yml for the one-time setup.
+
+      Kept at the end of <body> as a safe default (same spot the old
+      decap-cms tag needed). Pinned to an EXACT version, never a
+      "^range" — Sveltia ships frequent releases, and an unpinned range
+      can silently pull a breaking change into this admin panel with no
+      code change on our side to point to. Do NOT add type="module" and
+      do NOT add a separate stylesheet link — Sveltia's own docs warn
+      the module attribute can cause the bundle to misbehave, and all
+      required styles already ship bundled inside this one file.
     -->
-    <script src="https://unpkg.com/decap-cms@3.14.0/dist/decap-cms.js"></script>
+    <script src="https://unpkg.com/@sveltia/cms@0.170.4/dist/sveltia-cms.js"></script>
 </body>
 </html>
