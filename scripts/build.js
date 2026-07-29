@@ -2,17 +2,20 @@
 /**
  * Toggle Mind AI — static site build script.
  *
- * Reads editable content from /_content/**\/*.json and /_data/settings.json
- * (maintained through Decap CMS / DecapBridge at /admin) and renders it
- * into templates/index.template.html to produce the final index.html
- * that gets deployed. Runs automatically on every Netlify build (see
- * netlify.toml), so a CMS content change results in a fresh, fully
- * static page — no client-side data fetching, no framework, no server.
+ * Reads all editable content from the single _content/site.json file
+ * (maintained through Sveltia CMS at /admin as one entry, so every CMS
+ * edit — no matter how many sections/fields changed — is one Git commit
+ * and one Netlify build) and renders it into templates/index.template.html
+ * to produce the final index.html that gets deployed. Runs automatically
+ * on every Netlify build (see netlify.toml), so a CMS save results in a
+ * fresh, fully static page — no client-side data fetching, no framework,
+ * no server.
  *
- * Folder collections (services, industries, process, why_us, results,
- * technologies, faq) have no inherent order on a filesystem, so each
- * item file carries an explicit "order" (or "number" for process)
- * field that this script sorts by before rendering.
+ * List sections (services, industries, process, why_us, results,
+ * technologies, faq) are arrays inside site.json; each item still
+ * carries an explicit "order" (or "number" for process) field, and this
+ * script sorts by that before rendering so drag-reordering in the CMS
+ * isn't the only way to control display order.
  */
 "use strict";
 
@@ -27,35 +30,28 @@ function readJSON(relPath) {
   return JSON.parse(fs.readFileSync(path.join(ROOT, relPath), "utf8"));
 }
 
-function readCollection(folder, sortKey) {
-  var dir = path.join(ROOT, "_content", folder);
-  if (!fs.existsSync(dir)) return [];
-  var files = fs.readdirSync(dir).filter(function (f) {
-    return f.endsWith(".json");
-  });
-  var items = files.map(function (f) {
-    return readJSON(path.join("_content", folder, f));
-  });
-  items.sort(function (a, b) {
+function sortBy(items, sortKey) {
+  return (items || []).slice().sort(function (a, b) {
     return (a[sortKey] || 0) - (b[sortKey] || 0);
   });
-  return items;
 }
 
 function main() {
-  var settings = readJSON("_data/settings.json");
-  var hero = readJSON("_content/hero/main.json");
-  var about = readJSON("_content/about/main.json");
-  var profile = readJSON("_content/profile/main.json");
-  var contact = readJSON("_content/contact/main.json");
+  var site = readJSON("_content/site.json");
 
-  var services = readCollection("services", "order");
-  var industries = readCollection("industries", "order");
-  var process_ = readCollection("process", "number");
-  var whyUs = readCollection("why_us", "order");
-  var results = readCollection("results", "order");
-  var technologies = readCollection("technologies", "order");
-  var faq = readCollection("faq", "order");
+  var settings = site.settings;
+  var hero = site.hero;
+  var about = site.about;
+  var profile = site.profile;
+  var contact = site.contact;
+
+  var services = sortBy(site.services, "order");
+  var industries = sortBy(site.industries, "order");
+  var process_ = sortBy(site.process, "number");
+  var whyUs = sortBy(site.why_us, "order");
+  var results = sortBy(site.results, "order");
+  var technologies = sortBy(site.technologies, "order");
+  var faq = sortBy(site.faq, "order");
 
   var template = fs.readFileSync(path.join(ROOT, "templates/index.template.html"), "utf8");
 
