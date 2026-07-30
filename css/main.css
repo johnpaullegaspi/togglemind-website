@@ -84,11 +84,11 @@
         .nav { position: fixed; top: 0; left: 0; right: 0; z-index: var(--z-nav); background: rgba(255, 255, 255, 0.9); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border-bottom: 1px solid transparent; transition: all var(--transition-base); }
         .nav.is-scrolled { border-bottom-color: var(--color-gray-200); box-shadow: var(--shadow-sm); }
         .nav-inner { display: flex; align-items: center; justify-content: space-between; height: 72px; }
-        .nav-logo { display: flex; align-items: center; gap: var(--space-3); font-family: var(--font-heading); font-weight: 800; font-size: var(--text-lg); color: var(--color-primary); }
-        .nav-logo-icon { width: 36px; height: 36px; background: var(--color-primary); border-radius: var(--radius-md); display: flex; align-items: center; justify-content: center; color: var(--color-white); font-size: 1.25rem; }
+        .nav-logo { display: flex; align-items: center; gap: var(--space-3); font-family: var(--font-heading); font-weight: 800; font-size: var(--text-lg); color: var(--color-primary); white-space: nowrap; }
+        .nav-logo-icon { width: 36px; height: 36px; background: var(--color-primary); border-radius: var(--radius-md); display: flex; align-items: center; justify-content: center; color: var(--color-white); font-size: 1.25rem; flex-shrink: 0; }
         .nav-links { display: none; align-items: center; gap: var(--space-1); }
         @media (min-width: 1200px) { .nav-links { display: flex; } }
-        .nav-link { padding: var(--space-2) var(--space-4); font-family: var(--font-heading); font-size: var(--text-sm); font-weight: 500; color: var(--color-gray-600); border-radius: var(--radius-md); transition: all var(--transition-fast); }
+        .nav-link { padding: var(--space-2); font-family: var(--font-heading); font-size: var(--text-sm); font-weight: 500; color: var(--color-gray-600); border-radius: var(--radius-md); transition: all var(--transition-fast); white-space: nowrap; }
         .nav-link:hover { color: var(--color-primary); background: var(--color-gray-100); }
         .nav-cta { display: none; }
         @media (min-width: 1200px) { .nav-cta { display: inline-flex; } }
