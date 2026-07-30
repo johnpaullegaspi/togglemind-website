@@ -349,6 +349,78 @@
       "order": 6
     }
   ],
+  "portfolio": [
+    {
+      "title": "Aura Real Estate",
+      "category": "Real Estate Property Listings",
+      "description": "A luxury property listings site with buy, rent, and invest search flows for a modern real estate brand.",
+      "image": "assets/images/portfolio/aura-real-estate.jpg",
+      "url": "https://aurarealestatescorp.netlify.app",
+      "order": 1,
+      "featured": true,
+      "active": true
+    },
+    {
+      "title": "Aube Fashion",
+      "category": "Fashion Clothing",
+      "description": "A premium fashion storefront built to showcase seasonal collections for men and women with a clean, editorial feel.",
+      "image": "assets/images/portfolio/aube-fashion.jpg",
+      "url": "https://aubefashion.netlify.app",
+      "order": 2,
+      "featured": true,
+      "active": true
+    },
+    {
+      "title": "Velocity Shoe Apparel",
+      "category": "Shoe Apparel",
+      "description": "A bold, image-forward footwear brand site designed to put the product photography front and center.",
+      "image": "assets/images/portfolio/velocity-shoe-apparel.jpg",
+      "url": "https://velocityshoeapparel.netlify.app",
+      "order": 3,
+      "featured": false,
+      "active": true
+    },
+    {
+      "title": "Radiance Dental Studio",
+      "category": "Dental Clinic",
+      "description": "A friendly, modern dental clinic site with online appointment booking and a warm, patient-first tone.",
+      "image": "assets/images/portfolio/radiance-dental-clinic.jpg",
+      "url": "https://radiancedentalclinic.netlify.app",
+      "order": 4,
+      "featured": false,
+      "active": true
+    },
+    {
+      "title": "Aurelia Restaurant",
+      "category": "World-Class Dining Restaurant",
+      "description": "An upscale fine-dining restaurant site with reservation flows and immersive, atmospheric photography.",
+      "image": "assets/images/portfolio/aurelia-restaurant.jpg",
+      "url": "https://aurila-restaurant.netlify.app",
+      "order": 5,
+      "featured": true,
+      "active": true
+    },
+    {
+      "title": "Fernwood Animal Hospital",
+      "category": "Pet Care Clinic",
+      "description": "A compassionate veterinary hospital site highlighting services, wellness plans, and appointment booking.",
+      "image": "assets/images/portfolio/fernwood-animal-hospital.jpg",
+      "url": "https://fernwood-animal-hospital.netlify.app",
+      "order": 6,
+      "featured": false,
+      "active": true
+    },
+    {
+      "title": "Sizzlers Steakhouse",
+      "category": "American Restaurant",
+      "description": "A modern American steakhouse site with a dramatic hero, menu highlights, and table reservation calls-to-action.",
+      "image": "assets/images/portfolio/sizzlers-steakhouse.jpg",
+      "url": "https://sizzlersfoodie.netlify.app",
+      "order": 7,
+      "featured": false,
+      "active": true
+    }
+  ],
   "contact": {
     "heading": "Let's Build Smarter Solutions for Your Business",
     "description": "If you're looking to improve your online presence, simplify business processes, or explore practical AI solutions, we'd be happy to discuss your goals.",

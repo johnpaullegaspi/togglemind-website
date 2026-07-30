@@ -181,6 +181,35 @@ function renderFaq(items) {
     .join("");
 }
 
+function renderPortfolio(items) {
+  return items
+    .map(function (p, i) {
+      var featuredBadge = p.featured
+        ? '<span class="portfolio-featured-badge">Featured</span>'
+        : "";
+      var description = p.description
+        ? '<p class="portfolio-description">' + esc(p.description) + "</p>"
+        : '<p class="portfolio-description"></p>';
+      return (
+        '<a class="portfolio-card animate-on-scroll ' + delayClass(i) + '" ' +
+        'href="' + esc(p.url) + '" target="_blank" rel="noopener noreferrer" ' +
+        'aria-label="View live demo of ' + esc(p.title) + ' (opens in a new tab)">' +
+        '<div class="portfolio-image-wrap">' +
+        featuredBadge +
+        '<img src="' + esc(p.image) + '" alt="' + esc(p.title) + ' website preview" width="1200" height="750" loading="lazy" decoding="async">' +
+        "</div>" +
+        '<div class="portfolio-content">' +
+        '<span class="portfolio-category">' + esc(p.category) + "</span>" +
+        '<h3 class="portfolio-title">' + esc(p.title) + "</h3>" +
+        description +
+        '<span class="portfolio-cta">View Live Demo' + icons.EXTERNAL_LINK_ICON + "</span>" +
+        "</div>" +
+        "</a>"
+      );
+    })
+    .join("");
+}
+
 function renderContactHeading(contact) {
   return '<h2 class="contact-title animate-on-scroll">' + esc(contact.heading) + "</h2>";
 }
@@ -215,6 +244,7 @@ module.exports = {
   renderResults: renderResults,
   renderTechnologies: renderTechnologies,
   renderFaq: renderFaq,
+  renderPortfolio: renderPortfolio,
   renderContactHeading: renderContactHeading,
   renderContactCtas: renderContactCtas,
   renderFacebookLink: renderFacebookLink
