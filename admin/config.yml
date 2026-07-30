@@ -167,6 +167,20 @@ collections:
               - { label: "Answer", name: "answer", widget: "text" }
               - { label: "Display Order", name: "order", widget: "number", hint: "Lower numbers show first" }
 
+          - label: "Portfolio"
+            name: "portfolio"
+            widget: "list"
+            summary: "{{title}} — {{category}}"
+            fields:
+              - { label: "Project Title", name: "title", widget: "string" }
+              - { label: "Category", name: "category", widget: "string", hint: "e.g. Real Estate, Restaurant, Dental Clinic" }
+              - { label: "Short Description", name: "description", widget: "text", required: false }
+              - { label: "Featured Image", name: "image", widget: "image", hint: "Upload a thumbnail/preview image of the website (recommended ~1200x750, landscape)" }
+              - { label: "Live Website URL", name: "url", widget: "string", hint: "Full URL, e.g. https://example.com" }
+              - { label: "Display Order", name: "order", widget: "number", hint: "Lower numbers show first" }
+              - { label: "Featured", name: "featured", widget: "boolean", default: false, hint: "Featured projects are shown first" }
+              - { label: "Active (Show on site)", name: "active", widget: "boolean", default: true, hint: "Turn off to hide this project without deleting it" }
+
           - label: "Contact Section"
             name: "contact"
             widget: "object"

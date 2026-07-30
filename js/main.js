@@ -87,6 +87,21 @@
         }, 2500);
     }
 
+    // Portfolio card image loading skeletons.
+    // Each thumbnail sits inside a .portfolio-image-wrap that shows an
+    // animated shimmer (see main.css) until its <img> finishes loading,
+    // then the wrap gets .is-loaded and the real image fades in.
+    document.querySelectorAll('.portfolio-image-wrap').forEach(function(wrap) {
+        const img = wrap.querySelector('img');
+        if (!img) return;
+        if (img.complete && img.naturalWidth > 0) {
+            wrap.classList.add('is-loaded');
+        } else {
+            img.addEventListener('load', function() { wrap.classList.add('is-loaded'); });
+            img.addEventListener('error', function() { wrap.classList.add('is-loaded'); });
+        }
+    });
+
     // FAQ Accordion
     document.querySelectorAll('.faq-question').forEach(function(button) {
         button.addEventListener('click', function() {

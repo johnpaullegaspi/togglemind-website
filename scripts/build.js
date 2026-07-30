@@ -36,6 +36,25 @@ function sortBy(items, sortKey) {
   });
 }
 
+// Portfolio items: only show items that haven't been explicitly hidden
+// (active defaults to true when the field is missing), show Featured
+// projects first, then sort by Display Order within each group. This is
+// what lets staff reorder/feature/hide portfolio cards from Sveltia CMS
+// with zero code changes.
+function sortPortfolio(items) {
+  return (items || [])
+    .filter(function (p) {
+      return p.active !== false;
+    })
+    .slice()
+    .sort(function (a, b) {
+      var aFeatured = a.featured ? 0 : 1;
+      var bFeatured = b.featured ? 0 : 1;
+      if (aFeatured !== bFeatured) return aFeatured - bFeatured;
+      return (a.order || 0) - (b.order || 0);
+    });
+}
+
 function main() {
   var site = readJSON("_content/site.json");
 
@@ -52,6 +71,7 @@ function main() {
   var results = sortBy(site.results, "order");
   var technologies = sortBy(site.technologies, "order");
   var faq = sortBy(site.faq, "order");
+  var portfolio = sortPortfolio(site.portfolio);
 
   var template = fs.readFileSync(path.join(ROOT, "templates/index.template.html"), "utf8");
 
@@ -81,6 +101,7 @@ function main() {
     "<!--RESULTS-->": tpl.renderResults(results),
     "<!--TECHNOLOGIES-->": tpl.renderTechnologies(technologies),
     "<!--FAQ-->": tpl.renderFaq(faq),
+    "<!--PORTFOLIO-->": tpl.renderPortfolio(portfolio),
     "<!--CONTACT_HEADING-->": tpl.renderContactHeading(contact),
     "<!--CONTACT_CTAS-->": tpl.renderContactCtas(contact),
     "<!--FACEBOOK_LINK-->": tpl.renderFacebookLink(settings),
@@ -101,7 +122,8 @@ function main() {
     " why_us=" + whyUs.length +
     " results=" + results.length +
     " technologies=" + technologies.length +
-    " faq=" + faq.length
+    " faq=" + faq.length +
+    " portfolio=" + portfolio.length
   );
 }
 

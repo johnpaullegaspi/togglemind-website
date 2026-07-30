@@ -44,6 +44,9 @@ var FACEBOOK_ICON =
 var ARROW_RIGHT =
   '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>';
 
+var EXTERNAL_LINK_ICON =
+  '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><path d="M15 3h6v6"/><path d="M10 14 21 3"/></svg>';
+
 function getServiceIcon(key) {
   return SERVICE_ICONS[key] || SERVICE_ICONS.monitor;
 }
@@ -56,5 +59,6 @@ module.exports = {
   getServiceIcon: getServiceIcon,
   getWhyIcon: getWhyIcon,
   FACEBOOK_ICON: FACEBOOK_ICON,
-  ARROW_RIGHT: ARROW_RIGHT
+  ARROW_RIGHT: ARROW_RIGHT,
+  EXTERNAL_LINK_ICON: EXTERNAL_LINK_ICON
 };
