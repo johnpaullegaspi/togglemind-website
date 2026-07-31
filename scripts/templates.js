@@ -159,10 +159,79 @@ function renderResults(items) {
     .join("");
 }
 
+var TECHNOLOGY_LOGOS = {
+  "OpenAI": "assets/images/tools/openai.png",
+  "Claude": "assets/images/tools/claude.png",
+  "Google Gemini": "assets/images/tools/google-gemini.jpg",
+  "Kimi AI": "assets/images/tools/kimi.webp",
+  "Meta AI": "assets/images/tools/meta-ai.png",
+  "HTML5": "assets/images/tools/html5.png",
+  "CSS3": "assets/images/tools/css3.png",
+  "Javascript": "assets/images/tools/javascript.png",
+  "Cloud Based Databases": "assets/images/tools/postgresql.png",
+  "Google Workspace": "assets/images/tools/google-workspace.png",
+  "Make (Integromat)": "assets/images/tools/make.png",
+  "Messaging Services": "assets/images/tools/messenger.png",
+  "Email Services": "assets/images/tools/gmail.png",
+  "Webhooks": "assets/images/tools/webhooks.png",
+  "HTTP / API Modules": "assets/images/tools/postman.png",
+  "Sveltia CMS": "assets/images/tools/sveltia.jpg",
+  "Form Builder Platform": "assets/images/tools/tally.jpg"
+};
+
 function renderTechnologies(items) {
-  return items.map(function (t) {
-    return '<span class="tech-item">' + esc(t.title) + "</span>";
+  // Guard clause: ensure items is an array
+  if (!Array.isArray(items)) return "";
+
+  var logos = items.map(function (t) {
+    // 1. Safe title fallback
+    var rawTitle = (t && t.title) ? t.title : "Technology";
+    var title = esc(rawTitle);
+
+    // 2. Generate safe CSS class name
+    var className = String(rawTitle)
+      .toLowerCase()
+      .replace(/[^a-z0-9]+/g, "-")
+      .replace(/^-|-$/g, "");
+
+    // 3. Lookup logo in mapping object
+    var logo = (t && t.title && typeof TECHNOLOGY_LOGOS !== "undefined") 
+      ? TECHNOLOGY_LOGOS[t.title] 
+      : null;
+
+    var image = "";
+
+    // 4. Fixed logo path logic
+    if (logo) {
+      // If logo exists, use local asset path or construct external URL
+      var logoSource = logo.indexOf("assets/") === 0 ? logo : "assets/images/tools/" + logo;
+      image = '<img src="' + logoSource + '" alt="' + title + '" class="tech-logo" loading="eager" decoding="async" aria-hidden="true" onerror="this.style.display=\'none\'">';
+    } else {
+      // ELSE: Logo does not exist in TECHNOLOGY_LOGOS mapping or t.title was missing
+      // Option A: Leave image empty so only the title text renders
+      image = "";
+
+      // Option B: (Optional) If you have a default placeholder logo, use this instead:
+      // image = '<img src="assets/images/tools/default-icon.png" alt="" class="tech-logo">';
+    }
+
+    return (
+      '<div class="tech-item tech-item--' + className + '">' +
+        '<span class="tech-logo-area">' + image + "</span>" +
+        '<span class="tech-name">' + title + "</span>" +
+      "</div>"
+    );
   }).join("");
+
+  // The duplicated group creates a seamless, continuous logo marquee.
+  return (
+    '<div class="tech-marquee" role="region" aria-label="Technologies and platforms we work with">' +
+      '<div class="tech-track">' +
+        '<div class="tech-group">' + logos + "</div>" +
+        '<div class="tech-group" aria-hidden="true">' + logos + "</div>" +
+      "</div>" +
+    "</div>"
+  );
 }
 
 function renderFaq(items) {
