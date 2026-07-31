@@ -234,10 +234,36 @@
         .result-card:hover .result-icon { background: var(--color-accent); border-color: var(--color-accent); transform: scale(1.05); }
         .result-title { font-family: var(--font-heading); font-size: var(--text-lg); font-weight: 700; color: var(--color-white); margin-bottom: var(--space-2); }
         .result-description { font-size: var(--text-sm); color: rgb(255 255 255 / 0.6); line-height: 1.6; }
-        .technologies { background: var(--color-white); }
-        .tech-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: var(--space-4); }
-        .tech-item { display: inline-flex; align-items: center; gap: var(--space-2); padding: var(--space-3) var(--space-5); background: var(--color-gray-50); border: 1px solid var(--color-gray-200); border-radius: var(--radius-full); font-family: var(--font-heading); font-size: var(--text-sm); font-weight: 600; color: var(--color-gray-600); transition: all var(--transition-base); }
-        .tech-item:hover { border-color: var(--color-accent); color: var(--color-accent); background: rgb(255 106 19 / 0.04); transform: translateY(-2px); }
+        .technologies { background: var(--color-white); overflow: hidden; }
+        .tech-grid { margin: 0 calc(var(--space-6) * -1); }
+        .tech-marquee { width: 100%; overflow: hidden; padding: var(--space-6) 0 var(--space-8); mask-image: linear-gradient(to right, transparent, #000 7%, #000 93%, transparent); }
+        .tech-track { display: flex; width: max-content; animation: tech-marquee 52s linear infinite; will-change: transform; }
+        .tech-group { display: flex; align-items: stretch; gap: var(--space-10); padding-right: var(--space-10); flex-shrink: 0; }
+        .tech-item { display: grid; grid-template-rows: 88px minmax(2.8em, auto); place-items: center; gap: 18px; width: 200px; min-height: 186px; padding: var(--space-6); background: transparent; border: 0; border-radius: var(--radius-xl); font-family: var(--font-heading); font-size: var(--text-base); font-weight: 700; letter-spacing: -0.01em; color: var(--color-gray-600); text-align: center; transition: color var(--transition-base), transform var(--transition-base), background var(--transition-base); }
+        .tech-logo-area { display: flex; align-items: center; justify-content: center; width: 88px; height: 88px; }
+        .tech-logo { width: 84px; height: 84px; object-fit: contain; }
+        .tech-item--form-builder-platform .tech-logo { width: 104px; height: 104px; }
+        .tech-name { display: flex; align-items: start; justify-content: center; width: 100%; }
+        .tech-item:hover { color: var(--color-primary); background: var(--color-gray-50); transform: translateY(-6px); }
+        /* .tech-marquee:hover .tech-track { animation-play-state: paused; } */
+        /* ENFORCE CONTINUOUS SCROLLING */
+         .tech-track {
+         display: flex;
+         width: max-content;
+         animation: tech-marquee 52s linear infinite;
+         will-change: transform;
+         animation-play-state: running !important;
+         }
+
+         .tech-marquee:hover .tech-track,
+         .tech-track:hover,
+         .tech-item:hover,
+         .tech-item:active {
+         animation-play-state: running !important;
+         }
+        @keyframes tech-marquee { from { transform: translateX(-50%); } to { transform: translateX(0); } }
+        @media (max-width: 639px) { .tech-grid { margin: 0 calc(var(--space-4) * -1); } .tech-group { gap: var(--space-7); padding-right: var(--space-7); } .tech-item { grid-template-rows: 70px minmax(2.8em, auto); width: 155px; min-height: 158px; gap: 14px; padding: var(--space-4); font-size: var(--text-sm); } .tech-logo-area { width: 70px; height: 70px; } .tech-logo { width: 68px; height: 68px; } .tech-logo { width: 88px; height: 88px; } .tech-item--form-builder-platform .tech-logo { width: 82px; height: 82px; } .tech-track { animation-duration: 48s; } }
+        @media (prefers-reduced-motion: reduce) { .tech-marquee { overflow-x: auto; mask-image: none; } .tech-track { animation: none; } }
         .faq { background: var(--color-gray-50); }
         .faq-list { max-width: 800px; margin: 0 auto; display: flex; flex-direction: column; gap: var(--space-4); }
         .faq-item { background: var(--color-white); border-radius: var(--radius-lg); border: 1px solid var(--color-gray-200); overflow: hidden; transition: all var(--transition-base); }
