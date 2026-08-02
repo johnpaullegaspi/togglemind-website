@@ -419,12 +419,22 @@
       "order": 7,
       "featured": false,
       "active": true
+    },
+    {
+      "title": "Brew haven Cafe",
+      "category": "Coffee Shop",
+      "description": "Brew Haven Cafe is a cozy café serving handcrafted coffee, refreshing milk tea, delicious pasta, cakes, and other comfort food—perfect for relaxing, meeting friends, or enjoying a satisfying meal and drink.",
+      "image": "/assets/images/BrewHaven_Screenshot.png",
+      "url": "https://brewhavensplace.netlify.app/",
+      "order": 8,
+      "featured": true,
+      "active": true
     }
   ],
   "contact": {
     "heading": "Let's Build Smarter Solutions for Your Business",
     "description": "If you're looking to improve your online presence, simplify business processes, or explore practical AI solutions, we'd be happy to discuss your goals.",
     "cta_primary": "Book a Free Consultation",
-    "cta_primary_link": "https://calendly.com"
+    "cta_primary_link": "https://calendly.com/johnpaul_legaspi/intro-call"
   }
 }
